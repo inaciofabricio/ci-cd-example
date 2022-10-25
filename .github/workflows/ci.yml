@@ -1,0 +1,17 @@
+
+name: "CI (Integração Continua): Main Worflow"
+
+on:
+  # Ativa esse fluxo de trabalho para cada push ou pull que acontecer para a branch main
+  pull_request:
+    branches: [ opened, synchronize ]
+
+# Definindo onde será execitado
+jobs:
+  linter:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Run Linter
+        run: npm rum lint
