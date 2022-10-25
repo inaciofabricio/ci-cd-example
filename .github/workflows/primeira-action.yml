@@ -1,0 +1,19 @@
+
+name: "CI (Integração Continua): Primeira Action"
+
+on:
+  # Ativa esse fluxo de trabalho para cada push ou pull que acontecer para a branch main
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+# Definindo onde será execitado
+jobs:
+  exemplo:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Run a one-line script
+        run: echo Hello, world!
