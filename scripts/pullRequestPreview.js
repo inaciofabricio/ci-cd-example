@@ -48,6 +48,7 @@ fetch(
   })
   .catch((err) => {
     console.log("[COMMENT_ON_GITHUB: ERROR]");
+    console.log(err);
     throw new Error(err);
   })
   .finally(() => {
