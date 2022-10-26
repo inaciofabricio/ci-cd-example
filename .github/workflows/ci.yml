@@ -9,10 +9,8 @@ env:
   GITHUB_PR_NUMBER: ${{ github.event.number }}
 
 on:
-  push:
-    branches: [ "develop" ]
   pull_request:
-    branches: [ opened, synchronize ]
+    types: [opened, synchronize]
 
 jobs:
   linter:
