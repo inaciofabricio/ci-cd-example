@@ -11,7 +11,7 @@
     "lint": "next lint",
     "lint:fix": "next lint --fix",
     "deploy:staging": "npm run build && vercel ./build --confirm --no-clipboard --token=$VERCEL_TOKEN",
-    "deploy:prod": "npm run deploy:staging --prod",
+    "deploy:prod": "npm run deploy:staging vercel --prod",
     "deploy:preview": "node ./scripts/pullRequestPreview"
   },
   "keywords": [],
