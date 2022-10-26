@@ -1,0 +1,24 @@
+
+name: "CD (Entrega/Delivery Continua): Main Worflow"
+
+end:
+  VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+  VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+  VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+
+on:
+  # Ativa esse fluxo de trabalho para cada push ou pull que acontecer para a branch main
+  push:
+    branches: [ "main" ]
+
+# Definindo onde será execitado
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Next Install
+        run: npm install next --save
+      - name: Run Deploy Produção
+        run: npm deploy:prod
