@@ -21,4 +21,4 @@ jobs:
       - name: Next Install
         run: npm install next --save
       - name: Run Deploy Produção
-        run: npm deploy:prod
+        run: npm run deploy:prod
