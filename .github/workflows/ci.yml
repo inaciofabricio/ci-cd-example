@@ -14,8 +14,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-
       - name: Next Install
         run: npm install next --save
       - name: Run Linter
         run: npm run lint
+
+  preview:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Next Install
+        run: npm install next --save
+      - name: Run Deploy Preview
+        run: npm run deploy:preview
