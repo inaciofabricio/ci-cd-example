@@ -32,24 +32,26 @@ defaultHeaders["content-type"] = "application/json";
 console.log("GITHUB_REPOSITORY", GITHUB_REPOSITORY);
 console.log("GITHUB_PR_NUMBER", GITHUB_PR_NUMBER);
 
-fetch(
-  `https://api.github.com/repos/${GITHUB_REPOSITORY}/issues/${GITHUB_PR_NUMBER}/comments`,
-  {
-    headers: defaultHeaders,
-    method: "POST",
-    body: JSON.stringify({
-      body: GH_COMMENT,
-    }),
-  }
-)
-  .then((response) => {
-    if (response.ok) return response.json();
-    throw new Error(response.statusText);
-  })
-  .catch((err) => {
-    console.log("[COMMENT_ON_GITHUB: ERROR]");
-    throw new Error(err);
-  })
-  .finally(() => {
-    console.log("[COMMENT_ON_GITHUB: END]");
-  });
+if (GITHUB_REPOSITORY && GITHUB_PR_NUMBER) {
+  fetch(
+    `https://api.github.com/repos/${GITHUB_REPOSITORY}/issues/${GITHUB_PR_NUMBER}/comments`,
+    {
+      headers: defaultHeaders,
+      method: "POST",
+      body: JSON.stringify({
+        body: GH_COMMENT,
+      }),
+    }
+  )
+    .then((response) => {
+      if (response.ok) return response.json();
+      throw new Error(response.statusText);
+    })
+    .catch((err) => {
+      console.log("[COMMENT_ON_GITHUB: ERROR]");
+      throw new Error(err);
+    })
+    .finally(() => {
+      console.log("[COMMENT_ON_GITHUB: END]");
+    });
+}
