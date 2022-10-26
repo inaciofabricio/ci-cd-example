@@ -1,8 +1,9 @@
 import { execSync } from "child_process";
 
-console.log("Teste");
+console.log("[DEPLOY_PREVIEW]: START");
 
-const command = "ls -la";
-const output = execSync(command).toString();
-
+const command = "npm run deploy:staging";
+const output = execSync(command, { encoding: "utf-8" });
 console.log(output);
+
+console.log("[DEPLOY_PREVIEW]: END");
